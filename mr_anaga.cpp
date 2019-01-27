@@ -31,9 +31,9 @@ int main(int argc, char const *argv[]) {
         {
                 std::cin >> word;
                 sort(word.begin(), word.end());
-                bool notInUniqueSet = uniqueSet.find(word)==uniqueSet.end();
-                bool notInDuplicateSet = duplicateSet.find(word)==duplicateSet.end();
-                std::cout << notInUniqueSet<< '\n';
+                bool notInUniqueSet = uniqueSet.find(word) == uniqueSet.end();
+                bool notInDuplicateSet = duplicateSet.find(word) == duplicateSet.end();
+                //std::cout << notInUniqueSet<< '\n';
                 if(notInUniqueSet&&notInDuplicateSet) {
                         uniqueSet.insert(word);
                 }else{
