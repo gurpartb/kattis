@@ -151,3 +151,7 @@ dmypy.json
 *.app
 mr_anaga2
 mr_anaga3
+
+# node modules
+/node-kattis/node_modules
+/node-kattis/package-lock.json
