@@ -11,7 +11,7 @@ function cold_days(arr = [0]){
         count += (i < 0) ? 1 : 0; 
     }
     console.log(count);
-}
+};
 
 var n = -1;
 rl.on('line', (line)=>{
@@ -21,4 +21,4 @@ rl.on('line', (line)=>{
         let arr = line.split(' ').map(x=>parseInt(x));
         cold_days(arr);
     }
-})
+});
