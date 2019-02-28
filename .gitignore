@@ -155,3 +155,4 @@ mr_anaga3
 # node modules
 /node-kattis/node_modules
 /node-kattis/package-lock.json
+/node-kattis/package.json
