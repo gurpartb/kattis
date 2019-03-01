@@ -70,7 +70,7 @@ function main(){
 
 //*** moves array is initialized with all legal moves ***/
 
-function isValid(i , j){
+function isValidMove(i , j){
     return 0 <= i && i < dim[0] && 0 <= j && j < dim[1] && cells[i][j].alive && !cells[i][j].visited;
 }
 
@@ -78,7 +78,7 @@ function isValid(i , j){
 moves[0] = (i,j)=>{
     i--;
     j--;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -86,7 +86,7 @@ moves[0] = (i,j)=>{
 // move ^
 moves[1] = (i,j)=>{
     i--;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -95,7 +95,7 @@ moves[1] = (i,j)=>{
 moves[2] = (i,j)=>{
     i--;
     j++;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -103,7 +103,7 @@ moves[2] = (i,j)=>{
 // move >
 moves[3] = (i,j)=>{
     j++;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -112,7 +112,7 @@ moves[3] = (i,j)=>{
 moves[4] = (i,j)=>{
     i++;
     j++;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -120,7 +120,7 @@ moves[4] = (i,j)=>{
 // move v
 moves[5] = (i,j)=>{
     i++;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -129,7 +129,7 @@ moves[5] = (i,j)=>{
 moves[6] = (i,j)=>{
     i++;
     j--;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
@@ -137,7 +137,7 @@ moves[6] = (i,j)=>{
 // move <
 moves[7] = (i,j)=>{
     j--;
-    if(isValid(i , j)){
+    if(isValidMove(i , j)){
         return [i, j];
     }
 }
