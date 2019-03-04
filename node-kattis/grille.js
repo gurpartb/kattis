@@ -28,6 +28,7 @@ function grilles_are_unique(grille, grille_rotated){
     for(let k = 0; k < grille.length; k++){
 
         if(grille_rotated[k] === hole && grille[k] === hole){
+            
             return false;
         }
     }
@@ -68,9 +69,12 @@ function decipher_message(grille, line){
 // If message is legal, this function prints out
 // the message, else it prints out 'invalid grille'
 function print_message(message, grille){
+
     if(message.length !== grille.length){
+
         console.log('invalid grille');
     } else {
+
         console.log(message);
     }
 }
