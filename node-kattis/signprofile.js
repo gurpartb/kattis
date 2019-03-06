@@ -12,17 +12,17 @@ rl.on('line', line =>{
 
     let str = '';
 
-    for(let i = 1; i <arr.length; i++){
-        
-        if( arr[i-1] > arr[i] ){
+    if( arr[0] < arr[1]) str += '-'
 
-            str += '+'
+    if( arr[0] > arr[1]) str += '+'
 
-        } else if( arr[i-1] < arr[i] ){
+    if( arr[1] < arr[2] && str != '-') str += '-'
 
-            str += '-'
+    if( arr[1] > arr[2] && str != '+' ) str += '+'
 
-        }
-    }
+    if( arr[2] < arr[3] && str[str.length - 1] != '-') str += '-'
+
+    if( arr[2] > arr[3] && str[str.length - 1] != '+' ) str += '+'
+
     console.log(str)
 });
