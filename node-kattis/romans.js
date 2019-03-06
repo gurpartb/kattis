@@ -7,13 +7,13 @@ const rl = readline.createInterface({
 
 const feet_per_english_mile = 5280
 const feet_per_roman_mile = 4854
-const paces = 1000
+const paces_per_roman_mile = 1000
 
 rl.on('line', line=>{
 
     const english_mile = parseFloat(line)
 
-    const roman_paces = Math.round(english_mile*paces*feet_per_english_mile/feet_per_roman_mile)
-    
-    console.log(roman_paces)
+    const paces = Math.round(english_mile*(feet_per_english_mile/feet_per_roman_mile)*paces_per_roman_mile)
+
+    console.log(paces)
 })
