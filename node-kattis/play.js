@@ -1,10 +1,14 @@
-// let arr = '1 -1 20 -5 30 -2 4 7 8 -7 -3'.split(' ');
-// let arr_num = arr.map(x => (parseInt(x)<0? 1:0));
-// let sum = arr_num.map(x=>2*x);
-// console.log(sum);
-let num = parseInt('987654321');
-console.log(num);
-let ssd_arr = num.toString(16).split('');
-let ssd_arr2 = ssd_arr.map(x=>parseInt(x,16));//.join('').split('').map(x=>parseInt(x));
-let sum = ssd_arr2.reduce((acc, i)=>acc+i*i,0);
-console.log(sum);
+
+
+let arr = [ 1, 2, 3]
+let front_pos = 0;
+while(front_pos < arr.length){
+    console.log(arr)
+    // get the last element
+    let last = arr.pop()
+    // stick the last ement to the front
+    arr.unshift(last)
+
+    front_pos++;
+}
+console.log(arr)
