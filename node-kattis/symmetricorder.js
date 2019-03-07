@@ -5,37 +5,43 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-let arr = [];
-let count = 1
-let elements = 0
+let word_arr = []
+const SET = 'SET'
+let set_count = 1
+let word_count = 0
 
 rl.on('line', line =>{
-    if(elements === 0){
 
-        elements = parseInt(line)
+    if(word_count === 0){
+
+        word_count = parseInt(line)
 
     }else{
 
-        arr.push(line)
-        elements -= 1
+        word_arr.push(line)
+        word_count -= 1
 
-        if(elements === 0){
+        if(word_count === 0){
 
-            console.log('SET', count++)
+            console.log(SET, set_count++)
 
-            for(let i = 0; i < arr.length; i += 1){
+            for(let i = 0; i < word_arr.length; i++){
+
                 if(i % 2 === 0){
-                    console.log(arr[i])
-                }
 
-            }
-            for(let i = arr.length - 1 ; i >= 0; i -= 1){
-                if(i % 2 === 1){
-                    console.log(arr[i])
+                    console.log(word_arr[i])
                 }
             }
-            
-            arr = []
+
+            for(let i = word_arr.length - 1 ; i >= 0; i--){
+
+                if(i % 2 === 1){
+
+                    console.log(word_arr[i])
+                }
+            }
+
+            word_arr = []
         }
     }
 
