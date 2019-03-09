@@ -13,8 +13,7 @@ const dot = '.'
 var tot_lines = 0
 var first_line = true
 
-rl.on('line', line =>{
-
+function main(line){
     if(tot_lines === 0){
 
         tot_lines = parseInt(line)
@@ -31,9 +30,11 @@ rl.on('line', line =>{
         let pixel = arr.shift()
         let pixel_count = 0
 
+        let str = ''
+
         arr.forEach( x =>{
             for(let i = 0; i < parseInt(x); i++){
-                process.stdout.write(pixel)
+                str += pixel
                 pixel_count++
             }
             if(pixel === hash){
@@ -43,7 +44,7 @@ rl.on('line', line =>{
             }
         })
 
-        process.stdout.write('\n')
+        console.log(str)
 
         if(sizes.length < 3 && sizes[sizes.length - 1] !== pixel_count){
 
@@ -57,4 +58,11 @@ rl.on('line', line =>{
             sizes = [0]
         }
     }
+
+}
+
+rl.on('line', line =>{
+
+    main(line)
+    
 })
