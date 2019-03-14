@@ -20,24 +20,52 @@ function dis(v1, v2){
 }
 
 function minDis(xg, yg, x1, y1, x2, y2){
+
     if(y1 <= yg && yg <= y2){
+
         return Math.min(dis([x1], [xg]), dis([x2], [xg]))
     }
+
     if(x1 <= xg && xg <= x2){
+
         return Math.min(dis([y1], [yg]), dis([y2], [yg]))
     }
-    if(xg < x1 && yg < y1){
-        return dis([xg, yg], [x1, y1])
+
+    if(xg < x1){
+
+        if(yg < y1){
+
+            return dis([xg, yg], [x1, y1])
+        }
+
+        if(y2 < yg){
+
+            return dis([xg, yg], [x1, y2])
+        }
     }
-    if(xg > x2 && yg > y2){
+
+    if(yg > y2){
+
         return dis([xg, yg], [x2, y2])
     }
-    if(xg < x1 && y2 < yg){
-        return dis([xg, yg], [x1, y2])
-    }
-    if(xg > x1 && y1 > yg){
+    
+    if(y1 > yg){
+
         return dis([xg, yg], [x2, y1])
     }
+
+    // if(xg < x1 && yg < y1){
+    //     return dis([xg, yg], [x1, y1])
+    // }
+    // if(xg > x2 && yg > y2){
+    //     return dis([xg, yg], [x2, y2])
+    // }
+    // if(xg < x1 && y2 < yg){
+    //     return dis([xg, yg], [x1, y2])
+    // }
+    // if(xg > x1 && y1 > yg){
+    //     return dis([xg, yg], [x2, y1])
+    // }
 }
 
 // console.log(minDis(...[7, 3, 0, 0, 5, 4] === 2))
