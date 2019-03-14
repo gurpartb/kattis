@@ -10,7 +10,7 @@ rl.on('line', (line) => {
     console.log(minDis(...vectors))
 })
 
-// p1 and p2 are arrays ('vectors') of same size
+// v1 and v2 are arrays ('vectors') of same size
 function dis(v1, v2){
     let dis_square = 0
     for(let i = 0; i < v1.length; i++){
@@ -19,7 +19,6 @@ function dis(v1, v2){
     return Math.sqrt(dis_square)
 }
 
-// equation of line y = mx + b
 function minDis(xg, yg, x1, y1, x2, y2){
     if(y1 <= yg && yg <= y2){
         return Math.min(dis([x1], [xg]), dis([x2], [xg]))
@@ -41,4 +40,4 @@ function minDis(xg, yg, x1, y1, x2, y2){
     }
 }
 
-// minDis(...[7, 3, 0, 0, 5, 4])
+// console.log(minDis(...[7, 3, 0, 0, 5, 4] === 2))
