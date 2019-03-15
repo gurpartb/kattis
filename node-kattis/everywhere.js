@@ -1,16 +1,16 @@
 const readline = require('readline');
 
 const rl = readline.createInterface({
-    
+
     input: process.stdin,
     output: process.stdout
 });
 
-let n
-let k = 0
+let n, k
 let set = new Set()
 
 rl.on('line', (line) => {
+
     if(!n){
 
         n = line
@@ -23,15 +23,14 @@ rl.on('line', (line) => {
 
         } else {
 
-            k -= 1
             set.add(line)
+            k -= 1
 
-        }
+            if(!k){
 
-        if(!k){
-
-            console.log(set.size)
-            set.clear()
+                console.log(set.size)
+                set.clear()
+            }
         }
     }
 });
