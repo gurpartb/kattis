@@ -37,8 +37,6 @@ rl.on('line', (line) => {
 
         if(!n){
 
-            var weakvertices = [];
-
             for(let i = 0; i < m; i++){
 
                 let hasTwoConnectedChildren = false;
@@ -60,11 +58,9 @@ rl.on('line', (line) => {
                 }
 
                 if(!hasTwoConnectedChildren){
-                    weakvertices.push(i);
+                    process.stdout.write(i+' ')
                 }
             }
-
-            console.log(...weakvertices);
             vertices = [];
         }
     }
