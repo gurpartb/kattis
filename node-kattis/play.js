@@ -1,8 +1,1 @@
-let arr = [2,3,4,5]
-
-arr.forEach( (e, i) =>{
-    if(i%2)console.log(i, e)
-    else arr[i] = i
-})
-console.log([2,3,4,5])
-console.log(arr)
+console.log(...('5 1 3'.split(' ').map(x=>parseInt(x)).sort((a,b)=>a-b)))
