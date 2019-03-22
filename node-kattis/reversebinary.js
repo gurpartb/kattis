@@ -9,8 +9,8 @@ rl.on('line', (line) => {
     let n = parseInt(line)
     let str = '';
     while(n>0){
-        str = (n%2)? 1+str:0+str;
+        str += (n%2)? 1 : 0;
         n = Math.floor(n/2)
     }
-    console.log(parseInt(str.split('').reverse().join(''), 2))
+    console.log(parseInt(str, 2))
 });
