@@ -5,12 +5,17 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-rl.on('line', (line) => {
-    let n = parseInt(line)
-    let str = '';
-    while(n>0){
-        str += (n%2)? 1 : 0;
-        n = Math.floor(n/2)
+function reverseBinary(num){
+    let rev = '';
+    while(num>0){
+        rev += (num%2)? 1 : 0;
+        num = Math.floor(num/2)
     }
-    console.log(parseInt(str, 2))
+    return parseInt(rev, 2);
+}
+
+rl.on('line', (line) => {
+    let num = parseInt(line)
+    let rev = reverseBinary(num)
+    console.log(rev)
 });
