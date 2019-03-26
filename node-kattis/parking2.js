@@ -7,19 +7,12 @@ const rl = readline.createInterface({
 
 let n;
 let m;
-
 rl.on('line', (line) => {
-
     if(!n){
-
         n = line;
-
     }else if(!m){
-
         m = line;
-
     } else {
-
         let arr = line.split(' ').map(x => parseInt(x));
         let res = parking2(arr)
         console.log(res);
@@ -33,5 +26,5 @@ function parking2(arr){
         if(a.max < b) a.max = b;
         return a;
     }, { min : arr[0], max : arr[0]} );
-    return parseInt((obj.max - obj.min)*2);
+    return (obj.max - obj.min)*2;
 }
