@@ -1,4 +1,4 @@
-// I get the final solution I had to look over jhonnold's github solution
+// To fully understand the problem I partially looked over jhonnold's github solution.
 // I'm not sure if its the Autor or me, I didn't understand how to calculate
 // the penalty. On top of that author only provided only two basic example,
 // which were of no help in providind better understanding
