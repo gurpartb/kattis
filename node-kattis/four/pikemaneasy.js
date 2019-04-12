@@ -4,21 +4,26 @@
 // of no help in providing greater insight into the problem.
 const readline = require('readline');
 
-let arr1; 
 const rl = readline.createInterface({
+
     input: process.stdin,
     output: process.stdout
 });
 
+// -** *  * -=Global Variables=- *  * **- //
+let arr1;
+let penMod = 1000000007;
+
 rl.on('line', (line) => {
+
     if(!arr1){
 
         arr1 = line.split(' ').map( x => parseInt(x) );
     } 
     else {
 
-        let penMod = 1000000007;
         let arr2 = line.split(' ').map( x => parseInt(x) );
+
         pikemaneasy(...arr1, ...arr2, penMod);
     }
 });
@@ -45,7 +50,11 @@ function pikemaneasy(N, T, A, B, C, t0, penMod){
 
     // Calculate penalty time
     let j = 0;
-    while(j < N && tp + t[j] <= T){
+    while(j < N){
+
+        if(tp + t[j] > T){
+            break;
+        }
 
         penalty = (penalty + t[j] + tp) % penMod;
         tp += t[j];
