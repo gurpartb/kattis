@@ -2,15 +2,33 @@
 // I'm not sure if its the Autor or I, but I didn't understand how to calculate
 // the penalty. On top of that there are only two basic examples, which are
 // of no help in providing greater insight into the problem.
+const readline = require('readline');
+
+let arr1; 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+rl.on('line', (line) => {
+    if(!arr1){
+
+        arr1 = line.split(' ').map( x => parseInt(x) );
+    } 
+    else {
+
+        let penMod = 1000000007;
+        let arr2 = line.split(' ').map( x => parseInt(x) );
+        pikemaneasy(...arr1, ...arr2, penMod);
+    }
+});
+
 
 function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
 
-    let t = [];
-    let i = 0;
+    let t = [t0];
 
-    t[i] = t0;
-    i++;
-
+    let i = 1;
     while(i < N ){
 
         t[i] = ( (A * t[i-1] + B) % C) + 1;
@@ -20,13 +38,12 @@ function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
     t.sort( (a,b) => a - b );
 
     let penalty = 0;
-    let j = 0;
     let tp = 0;
 
+    let j = 0;
     while(j < N ){
 
         if(tp + t[j] > T){
-
             break;
         }
 
@@ -37,7 +54,5 @@ function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
         j++
     }
 
-    let res = [j, penalty];
-
-    return res;
+    console.log(j, penalty);
 }
