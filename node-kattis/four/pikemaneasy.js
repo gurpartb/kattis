@@ -24,10 +24,12 @@ rl.on('line', (line) => {
 });
 
 
-function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
+function pikemaneasy(N, T, A, B, C, t0, penMod){
 
-    let t = [t0];
+    let t = new Array(N);
+    t[0] = t0;
 
+    // i in [1 , N - 1]
     let i = 1;
     while(i < N ){
 
@@ -35,22 +37,18 @@ function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
         i++;
     }
 
+    // Maximize number of algorithms that can be tested
     t.sort( (a,b) => a - b );
 
     let penalty = 0;
     let tp = 0;
 
+    // Calculate penalty time
     let j = 0;
-    while(j < N ){
-
-        if(tp + t[j] > T){
-            break;
-        }
+    while(j < N && tp + t[j] <= T){
 
         penalty = (penalty + t[j] + tp) % penMod;
-
         tp += t[j];
-
         j++
     }
 
