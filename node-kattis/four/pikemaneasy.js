@@ -1,7 +1,7 @@
 // To fully understand the problem I partially looked over jhonnold's github solution.
-// I'm not sure if its the Autor or me, I didn't understand how to calculate
-// the penalty. On top of that author only provided only two basic example,
-// which were of no help in providind better understanding
+// I'm not sure if its the Autor or I, but I didn't understand how to calculate
+// the penalty. On top of that there are only two basic examples, which are
+// of no help in providing greater insight into the problem.
 
 function pikemaneasy( N, T, A, B, C, t0, penMod = 1000000007){
 
