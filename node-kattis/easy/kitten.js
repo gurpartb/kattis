@@ -16,54 +16,62 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-let child;
+let kittenBranch;
 
 rl.on('line', (line) => {
 
-    if(!child){
+    if(!kittenBranch){
 
-        child = parseInt(line);
+        // first line gives us the kitten branch
+        kittenBranch = parseInt(line);
     }
     else {
 
+        // we read all subtrees
         if(line === '-1'){
 
-            let res = getRoot(child);
+            let res = getPath(kittenBranch);
             console.log(...res);
             process.exit();
         }
 
+        // Building the tree, read sub tree added to 
         let arr = line.split(' ').map( x => parseInt(x) );
-
-        postTree(arr)
+        putTree(arr)
     }
 });
 
 
-const dict = {};
+const tree = {};
 
-function postTree(arr = [1,2,3]){
+//
+function putTree(subTree = [1,2,3]){
 
     // parent (or root node)
-    let val = arr[0];
+    let root = subTree[0];
 
-    for(let i = 1; i < arr.length; i++){
+    for(let i = 1; i < subTree.length; i++){
 
         // child (or leaf node)
-        let key = arr[i];
-        dict[key] = val;
+        let leaf = subTree[i];
+        tree[leaf] = root;
     }
 }
 
-function getRoot(child){
+function getPath(kittenBranch){
 
-    let path = [child];
+    let path = [];
+    let root = kittenBranch;
+
     let i = 0;
+    path[i] = root;
+    root = tree[root];
 
-    while( dict[ path [i] ] !== undefined){
+    while( root !== undefined){
 
-        path[i + 1] = dict[ path[i] ];
         i++;
+        path[i] = root;
+        root = tree[root];
     }
 
     return path;
