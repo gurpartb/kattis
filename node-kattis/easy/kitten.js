@@ -17,6 +17,7 @@ const rl = readline.createInterface({
 });
 
 let kittenBranch;
+let lastLine = '-1';
 
 rl.on('line', (line) => {
 
@@ -28,7 +29,7 @@ rl.on('line', (line) => {
     else {
 
         // we read all subtrees
-        if(line === '-1'){
+        if(line === lastLine){
 
             let res = getPath(kittenBranch);
             console.log(...res);
@@ -44,7 +45,6 @@ rl.on('line', (line) => {
 
 const tree = {};
 
-//
 function putTree(subTree = [1,2,3]){
 
     // parent (or root node)
