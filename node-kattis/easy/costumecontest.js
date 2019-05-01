@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 let firstLine;
 const dict = {};
 
-// 1. read costume
+// 1. read costumes
 rl.on('line', (line) => {
 
     if(!firstLine){
@@ -16,7 +16,8 @@ rl.on('line', (line) => {
         firstLine = line;
     }
     else {
-        // add or increment count
+
+        // 2. add or increment count
         if(dict[line]){
 
             dict[line]++
@@ -30,9 +31,16 @@ rl.on('line', (line) => {
 
 process.stdin.on('end', ()=>{
 
+    // 3. get min val
     const minVal = getMinVal(dict);
+
+    // 4. get keys for min val
     const keys = getKeys(dict, minVal);
+
+    // 5. sort the keys
     keys.sort();
+
+    // 6. print the keys
     print(keys);
 })
 
