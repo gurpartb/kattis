@@ -1,2 +1,3 @@
-let arr = [ [1,2], [2,3]]
-console.log(arr[0][0])
+let num = 2**69;
+let str = num.toString();
+console.log(str.length, num)
