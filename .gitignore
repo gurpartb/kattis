@@ -156,3 +156,6 @@ mr_anaga3
 /node-kattis/node_modules
 /node-kattis/package-lock.json
 /node-kattis/package.json
+
+# other
+.vscode
