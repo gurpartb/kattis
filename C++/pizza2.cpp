@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    double c, r, cheese;
+    double c, r, cheese, ratio;
 
     std::cout.precision(9);
 
@@ -10,7 +10,7 @@ int main(int argc, char const *argv[])
 
     cheese = r - c;
     
-    double ratio = 100 * (cheese * cheese) / (r * r);
+    ratio = 100 * (cheese * cheese) / (r * r);
 
     std::cout << ratio << '\n';
 
