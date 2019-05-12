@@ -1,13 +1,13 @@
 CC = g++
 
-all: pizza2.out
-	cat sample.txt | ./pizza2.out
+all: prsteni.out
+	cat sample.txt | ./prsteni.out
 
-pizza2.out: pizza2.o
-	$(CC) -o pizza2.out pizza2.cpp
+prsteni.out: prsteni.o
+	$(CC) -o prsteni.out prsteni.cpp
 
-pizza2.o: pizza2.cpp
-	$(CC) -c pizza2.cpp
+prsteni.o: prsteni.cpp
+	$(CC) -c prsteni.cpp
 
 clean:
-	rm pizza2.out pizza2.o
+	rm prsteni.out prsteni.o
