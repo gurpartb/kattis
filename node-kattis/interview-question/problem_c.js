@@ -1,79 +1,69 @@
-// Find last x non-zero digits of n!
+// Find upto last 3 non-zero digits of n!
+// Three only not more than three
 
-const pow_arr = [1];
+const pow_arr = [ 1 ];
 
-function pow(base = 12, exp = 16, sig_fig = 3){
+function pow( base, exp, sig_fig ){
 
-    if(pow_arr.length > exp){
-
-        return pow_arr[exp];
-    }
-
-    let res = pow_arr[pow_arr.length - 1];
+    let res = pow_arr[ pow_arr.length - 1 ];
     const modder = 10**sig_fig;
   
-    while(pow_arr.length <= exp){
+    while( pow_arr.length <= exp ){
 
-      res = (res*base)%modder;
-      pow_arr.push(res);
+      res = ( res * base ) % modder;
+      pow_arr.push( res );
     }
   
-    return res;
+    return pow_arr[ exp ] % modder;
 }
   
-function tail_fact(n = 84, sig_fig = 3){
+function tail_fact( n, sig_fig ){
 
     let res = 1;
-
     const modder = 10**sig_fig;
+    n = n % modder;
 
-    while(n % 5){
+    while( n % 5 ){
 
-        res = (res*n)%modder;
+        res = ( res * n ) % modder;
         n--;
     }
 
     return res;
 }
   
-function factorial(n = 3, sig_fig = 3){
+function factorial( n, sig_fig ){
 
     let res = 1;
     const modder = 10**sig_fig;
 
-    if(n <= 1){
+    while( n > 1 ){
 
-        return res;
-    }
-
-    while(n > 1){
-
-        res = (res*n)%modder;
+        res = ( res * n ) % modder;
         n--;
     }
 
     return res;
 }
   
-function D(n = 84, sig_fig = 3){
+function D( n, sig_fig = 3 ){
 
     let res;
 
-    if(n < 5){
+    if( n < 5 ){
 
-        return factorial(n, sig_fig);
+        return factorial( n, sig_fig );
     }
 
-    const exp = Math.floor(n/5);
+    const exp = Math.floor( n / 5 );
     const base = 12;
     const modder = 10**sig_fig;
 
-    res = (pow(base, exp, sig_fig)*D(exp))%modder;
-    res = (res*tail_fact(n))%modder;
+    res = ( pow( base, exp, sig_fig ) * D( exp ) ) % modder;
+    res = ( res * tail_fact( n, sig_fig )  ) % modder;
 
     return res;
 }
-  
 
 const readline = require('readline');
 
@@ -86,21 +76,21 @@ const rl = readline.createInterface({
 
 const sig_fig = 3;
 
-rl.on('line', (line) => {
+rl.on( 'line', ( line ) => {
 
-    const num = parseInt(line);
+    const num = parseInt( line );
 
-    let res = D( num, sig_fig);
+    let res = D( num, sig_fig );
 
     if(res <= 99 && num >= 7 ){
 
         res = res.toString();
 
-        while(res.length < 3){
+        while( res.length < 3 ){
 
             res = '0' + res;
         }
     }
 
-    console.log(res);
-});
+    console.log( res );
+} );
