@@ -73,7 +73,7 @@ function main(data){
 
                 if(set.isValid()){
 
-                    valid_set_arr.push([i+1,j+1,k+1]);
+                    valid_set_arr.push(set.cards.values());
                 }
             }
         }
@@ -95,7 +95,7 @@ function main(data){
 const readline = require('readline');
 
 const rl = readline.createInterface({
-    
+
     input: process.stdin,
     output: process.stdout
 });
