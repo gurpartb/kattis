@@ -16,10 +16,15 @@ function binaryToHex(binStr){
     const four = 4;
     const zero = '0';
 
-    const binStrC = ''.padStart( four - ( binStr.length % four ) , zero ) + binStr;
+    // binStrCopy is binStr paded with '0' if needed. 
+    // Paddig binStrCopy start with '0' ensures binStr.length is evenly divisible by 4
+    const binStrCopy = ''.padStart( four - ( binStr.length % four ) , zero ) + binStr;
 
-    const hexArr = binStrC.match(/.{1,4}/g).map( bin => binaryToHexObj[ bin ] );
+    // since binStrCopy.length is evenly divisible by 4,
+    // hexArr will contain string of size 4 at each index
+    const hexArr = binStrCopy.match(/.{1,4}/g).map( bin => binaryToHexObj[ bin ] );
 
+    // remove the leading zero, unless '0' is the only element
     if(hexArr[0] === '0' && hexArr.length > 1){
 
         hexArr.shift();
