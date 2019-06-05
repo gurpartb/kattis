@@ -1,6 +1,4 @@
-
-
-function simonsays(line = 'Simon sa hello byes'){
+function simonsays(line){
 
     const simon = 'Simon';
     const says = 'says';
@@ -28,9 +26,9 @@ rl.on('line', (line) => {
 
         const res = simonsays(line);
 
-    if(res){
-        
-        console.log(res);
+        if(res){
+            
+            console.log(res);
+        }
     }
-}
 });
