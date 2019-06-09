@@ -9,6 +9,22 @@ function createTab(){
     return tab;
 }
 
+function editLog(line){
+
+    const arr = line.split(' ');
+
+    const action = arr[0];
+    const name = arr[1];
+    const time = arr[2];
+
+    if(!tabs[name]){
+
+        tabs[name] = createTab();
+    }
+
+    tabs[name][action].push(time);
+}
+
 function bill(obj = {ENTER: [0], EXIT: [23] }, price){
 
     const enterArr = obj.ENTER;
@@ -33,6 +49,22 @@ function printTabs(price){
     });
 }
 
+function parkOpen(count){
+
+    if(count > 1){
+
+        console.log();
+    }
+
+    tabs = {};
+}
+
+function parkClose(count, price){
+
+    console.log('Day', count);
+    printTabs(price);
+}
+
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -44,36 +76,20 @@ const rl = readline.createInterface({
 let tabs = {}
 const price = 0.10;
 let count = 0;
+
 rl.on('line', (line) => {
+    
     if(line === 'OPEN'){
 
-        if(count){
-
-            console.log();
-        }
-
         count++;
-        tabs = {};
+        parkOpen(count);
     }
     else if(line === 'CLOSE'){
 
-        console.log('Day', count);
-        printTabs(price);
+        parkClose(count, price);
     }
     else { 
 
-        const arr = line.split(' ');
-
-        const action = arr[0];
-        const name = arr[1];
-        const time = arr[2];
-
-        if(!tabs[name]){
-
-            tabs[name] = createTab();
-        }
-
-        tabs[name][action].push(time);
+        editLog(line);
     }
-
 });
