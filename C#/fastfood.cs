@@ -41,7 +41,7 @@ namespace fastfood
 
         public void addPrize(List<int> coupons, int amount)
         {
-            // should check for duplicate entries; if duplicate exits then asses changes
+            // should check for duplicate entries; if duplicate exits then assess changes
             Prize prize = new Prize(coupons, amount);
             this.prizes.Add(prize);
         }
