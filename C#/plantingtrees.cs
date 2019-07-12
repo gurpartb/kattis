@@ -15,11 +15,11 @@ namespace plantingtrees
             // list provides additional functionality that array does not
             var seeds = line.Split(' ').Select(int.Parse).ToList();
 
-            // sort list in deceding order. Its efficient to play the seed that takes the longest time first
+            // sort list in deceding order. Its efficient to plant the seed that takes the longest time first
             seeds.Sort((a,b) => b.CompareTo(a));
 
-            // Best case party start one day after the very last tree is fully grown
-            // Therefore, set i = seeds.count - 1, and intial fullyGrownDay = (i + 1) + seeds[i] (seeds is sorted decending)
+            // Best case party starts one day after the very last tree is fully grown
+            // Therefore, set i = seeds.count - 1, and intial fullyGrownDay = (i + 1) + seeds[i] (seeds is sorted in decending order)
             // We step back to the previous seed by setting i = i - 1, and set fullyGrownDay = max( fullyGrownDay, (i + 1) + seeds[i])
             var fullyGrownDay = 0;
 
