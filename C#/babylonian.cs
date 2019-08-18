@@ -23,7 +23,7 @@ namespace babylonian
 
                 for (int j = 0; j < intList.Count; j++)
                 {
-                    sum += NumToOtherNumSystem(intList[j], intList.Count - j - 1, sixPowList, tenPowList);
+                    sum += OtherNumToDecimal(intList[j], intList.Count - j - 1, sixPowList, tenPowList);
                 }
 
                 Console.WriteLine(sum);
@@ -57,9 +57,9 @@ namespace babylonian
             return list;
         }
 
-        public static long NumToOtherNumSystem(int n, int pos, List<int> num, List<int> otherNum)
+        public static long OtherNumToDecimal(int otherNum, int pos, List<int> nums, List<int> tens)
         {
-            return (long)n * num[pos] * otherNum[pos];
+            return (long)otherNum * nums[pos] * tens[pos];
         }
     }
 }
