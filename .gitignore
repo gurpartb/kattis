@@ -1,3 +1,19 @@
+missingnomes.js
+bond.js
+carefulascent.js
+erase.js
+findAngles.js
+karte.js
+mirror.js
+segmentdistance.js
+tajna.js
+calculator.js
+frosting.js
+monk.js
+package-lock.json
+package.json
+node-kattis/
+
 # set ignore attributes C++ and Python projects
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -8,7 +8,7 @@ namespace santaklas
         static void Main(string[] args)
         {
             string line = Console.ReadLine();
-            var arr = line.Split(' ').Select(int.Parse).ToArray(); ;
+            var arr = line.Split(' ').Select(int.Parse).ToArray();
 
             var height = arr[0];
             var angle = arr[1];

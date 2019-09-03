@@ -1,94 +1,67 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace mia
+namespace driversdilemma
 {
     class Program
     {
-        public static Dictionary<int, int> scoreG;
-
         static void Main(string[] args)
         {
-            scoreG = BuildDictionary();
-            string line;
+            int totalLines = 7;
 
-            while(true)
+            string[] arr = ReadData(totalLines);
+
+            double[] arr1 = StringToDoubleArray(arr[0]);
+
+            double capacity = arr1[0];
+            double leakSpeed = arr1[1];
+            double distance = arr1[2];
+            double initialFuel = capacity / 2;
+
+            string fastestSpeed = "NO";
+
+            for (int i = 1; i < arr.Length; i++)
             {
-                line = Console.ReadLine();
-                int[] arr = line.Split(' ').Select(int.Parse).ToArray();
+                double[] arr2 = StringToDoubleArray(arr[i]);
 
-                if(arr[0] == 0)
-                {
-                    return;
-                }
+                double vehicleSpeed = arr2[0];
+                double mpg = arr2[1];
 
-                int playerOneKey = LargerInt(arr[0], arr[1]);
-                int playerTwoKey = LargerInt(arr[2], arr[3]);
+                bool possible = CanTravelTheDistance(initialFuel, leakSpeed, distance, vehicleSpeed, mpg);
 
-                int playerOneScore = Evaluate(playerOneKey);
-                int playerTwoScore = Evaluate(playerTwoKey);
-
-                if(playerOneScore > playerTwoScore)
+                if (possible)
                 {
-                    Console.WriteLine("Player 1 wins.");
-                }
-                else if(playerTwoScore > playerOneScore)
-                {
-                    Console.WriteLine("Player 2 wins.");
-                }
-                else
-                {
-                    Console.WriteLine("Tie.");
+                    fastestSpeed = "YES " + vehicleSpeed;
                 }
             }
+
+            Console.WriteLine(fastestSpeed);
         }
 
-
-        public static int Evaluate(int key)
+        static bool CanTravelTheDistance(double initialFuel, double leakSpeed, double distance, double vehicleSpeed, double milesPerGallon)
         {
-            if (scoreG.ContainsKey(key))
-            {
-                return scoreG[key];
-            }
-            return key;
+            double time = distance / vehicleSpeed;
+            double fuel = initialFuel - leakSpeed * time;
+            double actualDistance = fuel * milesPerGallon;
+
+            return actualDistance > distance;
         }
 
-        public static Dictionary<int,int> BuildDictionary()
+        static double[] StringToDoubleArray(string str)
         {
-            var score = new Dictionary<int, int>();
-            // build dictionary
-            var val = 66;
-            for (int i = 1; i <= 6; i++)
-            {
-                var key = i * 10 + i;
-                score.Add(key, val);
-                val++;
-            }
-
-            score.Add(21, val);
-
-            return score;
+            return str.Split(' ').Select(x => double.Parse(x)).ToArray();
         }
 
-        public static int LargerInt(int n1, int n2)
+        static string[] ReadData(int totalLines)
         {
-            int tenth, ones;
+            String[] arr = new string[totalLines];
 
-            if(n1 > n2)
+            for (int i = 0; i < arr.Length; i++)
             {
-                tenth = n1;
-                ones = n2;
-            }
-            else
-            {
-                tenth = n2;
-                ones = n1;
+                arr[i] = Console.ReadLine();
             }
 
-            int larger = tenth * 10 + ones;
-
-            return larger;
+            return arr;
         }
     }
 }
