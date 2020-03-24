@@ -8,12 +8,12 @@ namespace kemija
         {
             string line = Console.ReadLine();
 
-            string msg = "";
+            string res = "";
 
             for (int i = 0; i < line.Length; i++)
             {
                 char c = line[i];
-                msg += c;
+                res += c;
 
                 if(IsVowel(c))
                 {
@@ -21,13 +21,13 @@ namespace kemija
                 }
             }
 
-            System.Console.WriteLine(msg);
+            System.Console.WriteLine(res);
         }
 
         static bool IsVowel(char c)
         {
-            string vowel = "aeiou";
-            return vowel.Contains(c);
+            string vowelSet = "aeiou";
+            return vowelSet.Contains(c);
         }
     }
 }
