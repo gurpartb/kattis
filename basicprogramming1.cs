@@ -91,11 +91,7 @@ namespace basicprogramming1
     
         static long SumNumMod(int[] arr, int num = 2, int mod = 0)
         {
-            long sum = 0;
-            foreach (var item in arr.Where( i => i % num == mod))
-            {   
-                sum += item;
-            }
+            long sum = Sum(arr.Where( i => i % num == mod).ToArray());
             return sum;
         }
     
