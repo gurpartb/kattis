@@ -13,9 +13,8 @@ namespace chanukah
             {
                 string[] arr = line.Split(' ');
                 int num = int.Parse(arr[1]);
-                num++;
-                int res = ((num * (num + 1)) / 2) - 1;
-                System.Console.WriteLine(arr[0]+" "+res);
+                int res = (num + 1) * (num + 2) / 2 - 1;
+                System.Console.WriteLine($"{arr[0]} {res}");
             }
         }
     }
