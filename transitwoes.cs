@@ -9,10 +9,10 @@ namespace transitwoes
     {
         public static void Main(string[] args)
         {
-            int[] stn = FormatedLine();
-            int[] d = FormatedLine();
-            int[] b = FormatedLine();
-            int[] c = FormatedLine();
+            int[] stn = ReadIntArray();
+            int[] d = ReadIntArray();
+            int[] b = ReadIntArray();
+            int[] c = ReadIntArray();
 
             for (int i = 0; i < stn[2]; i++)
             {
@@ -24,7 +24,7 @@ namespace transitwoes
             System.Console.WriteLine(stn[1] - stn[0] >= 0? "yes":"no");
         }
 
-        static int[] FormatedLine()
+        static int[] ReadIntArray()
         {
             string line = Console.ReadLine();
             string[] arr = line.Split(' ');
