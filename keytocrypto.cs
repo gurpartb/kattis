@@ -10,25 +10,31 @@ namespace keytocrypto
         {
             string cipherText = Console.ReadLine();
             string key = Console.ReadLine();
-            char[] message = new char[cipherText.Length];
-
-            for (int i = 0; i < Math.Min(key.Length, cipherText.Length); i++)
-            {
-                message[i] = Decode(cipherText[i], key[i], 26, 'A');
-            }
-
-            if(key.Length < cipherText.Length)
-            {
-                for (int i = key.Length; i < cipherText.Length ; i++)
-                {
-                    message[i] = Decode(cipherText[i], message[i - key.Length], 26, 'A');
-                }
-            }
-
+            string message = DecodeMessage(cipherText, key);
+            
             System.Console.WriteLine(message);
         }
 
-        static char Decode(char cipher, char key, int mod = 26, char zero = 'A')
+        static string DecodeMessage(string cipherText, string key, int mod = 26, char zero = 'A')
+        {
+            char[] message = new char[cipherText.Length];
+
+            for (int i = 0; i < cipherText.Length; i++)
+            {
+                if(i < key.Length)
+                {
+                    message[i] = DecodeChar(cipherText[i], key[i]);
+                }
+                else
+                {
+                    message[i] = DecodeChar(cipherText[i], message[i - key.Length]);
+                }
+            }
+
+            return new string(message);
+        }
+
+        static char DecodeChar(char cipher, char key, int mod = 26, char zero = 'A')
         {
             return (char) ((cipher - key + mod) % mod + zero);
         }
