@@ -16,7 +16,7 @@ namespace loorolls
             long r = ln[0] % ln[1];
             count++;
 
-            while(r > 0)
+            while(r != 0)
             {
                 ln[1] += -r;
                 r = ln[0] % ln[1];
