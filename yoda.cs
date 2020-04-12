@@ -15,20 +15,10 @@ namespace yoda
             string res2 = "";
 
             int i = 0;
-            while(i < Math.Max(line1.Length, line2.Length))
+            while(i < Math.Min(line1.Length, line2.Length))
             {
-                int l1 = -1;
-                int l2 = -1;
-
-                if(i < line1.Length)
-                {
-                    l1 = line1[line1.Length - i - 1] - '0';
-                }
-
-                if(i < line2.Length)
-                {
-                    l2 = line2[line2.Length - i - 1] - '0';
-                }
+                int l1 = line1[line1.Length - i - 1] - '0';
+                int l2 = line2[line2.Length - i - 1] - '0';
 
                 if(l1 >= l2)
                 {
@@ -41,6 +31,16 @@ namespace yoda
                 }
 
                 i++;
+            }
+
+            if(i < line1.Length)
+            {
+                res1 = line1.Substring(0, line1.Length - i) + res1;
+            }
+
+            if(i < line2.Length)
+            {
+                res2 = line2.Substring(0, line2.Length - i) + res2;
             }
 
             res1 = Result(res1);
