@@ -15,14 +15,14 @@ namespace musicalnotation
 
             Dictionary<char,char[]> dict = new Dictionary<char, char[]>();
 
+            _ = Console.ReadLine();
+            string line = Console.ReadLine();
+            int length = GetLength(line);
+
             foreach (char chr in notes)
             {
                 dict.Add(chr, CharArr(length, noteFill.Contains(chr)? fill: ' '));
             }
-
-            _ = Console.ReadLine();
-            string line = Console.ReadLine();
-            int length = GetLength(line);
 
             string[] arr = line.Split(' ');
 
