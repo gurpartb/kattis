@@ -12,16 +12,17 @@ namespace musicalnotation
             string notes = "GFEDCBAgfedcba";
             char fill = '-';
             string noteFill = "FDBgea";
-            Dictionary<char,char[]> dict = new Dictionary<char, char[]>();
 
-            _ = Console.ReadLine();
-            string line = Console.ReadLine();
-            int length = GetLength(line);
+            Dictionary<char,char[]> dict = new Dictionary<char, char[]>();
 
             foreach (char chr in notes)
             {
                 dict.Add(chr, CharArr(length, noteFill.Contains(chr)? fill: ' '));
             }
+
+            _ = Console.ReadLine();
+            string line = Console.ReadLine();
+            int length = GetLength(line);
 
             string[] arr = line.Split(' ');
 
@@ -82,7 +83,6 @@ namespace musicalnotation
         {
             string str = new string(arr);
             System.Console.WriteLine($"{chr}: {str}");
-            //System.Console.WriteLine(chr.ToString()+": "+str);
         }
     }
 }
