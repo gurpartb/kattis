@@ -8,35 +8,38 @@ namespace froshweek
     {
         public static void Main()
         {
-            string line = Console.ReadLine();
+            _  = Console.ReadLine();
+
             int[] t = ReadIntArray();
             int[] l = ReadIntArray();
+
             Array.Sort(t);
-            Array.Reverse(t);
             Array.Sort(l);
+
+            Array.Reverse(t);
             Array.Reverse(l);
 
+            int count = FroshWeek(t, l);
+            System.Console.WriteLine(count);
+        }
+
+        // parms Int[] t,l in decending order
+        static int FroshWeek(int[] t, int[] l)
+        {
+            int ti = 0;
+            int li = 0;
             int count = 0;
-            int j = 0;
 
-            for (int i = 0; i < l.Length; i++)
+            while(ti < t.Length && li < l.Length)
             {
-                while(j < t.Length && t[j] > l[i])
+                if(t[ti] <= l[li])
                 {
-                    //System.Console.WriteLine($"{j} {t[j]} {l[i]} ");
-                    j++;
-                }
-                
-
-                if(j < t.Length && t[j] <= l[i])
-                {
-                    //System.Console.WriteLine($"{j} {t[j]} {l[i]}");
-                    j++;
+                    li++;
                     count++;
                 }
+                ti++;
             }
-            System.Console.WriteLine(count);
-            
+            return count;
         }
 
         static int[] ReadIntArray()
