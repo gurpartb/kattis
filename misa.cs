@@ -30,7 +30,7 @@ namespace misa
                     {
                         foreach(int _j in new int[]{-1, 0, 1})
                         {
-                            if(_i != 0 || _j != 0)
+                            if(_i != 0 || _i != _j)
                             {
                                 int ti = i + _i;
                                 int tj = j + _j;
