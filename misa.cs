@@ -9,11 +9,11 @@ namespace misa
         {
             int[] rowCol = ReadIntArray();
             string[] map = ReadStringArray(rowCol[0]);
-            int n = HandShakesTotal(map);
+            int n = Misa(map);
             System.Console.WriteLine(n);
         }
 
-        static int HandShakesTotal(string[] map)
+        static int Misa(string[] map)
         {
             int n = 0;
             int m = 0;
@@ -25,128 +25,37 @@ namespace misa
             {
                 for (int j = 0; j < map[i].Length; j++)
                 {
-                    if(map[i][j] == individual)
+                    int tm = 0;
+                    foreach(int _i in new int[]{-1, 0, 1})
                     {
-                        n += HandShakesIndividualSE(map, i, j, neighbor);
+                        foreach(int _j in new int[]{-1, 0, 1})
+                        {
+                            if(_i != 0 || _j != 0)
+                            {
+                                int ti = i + _i;
+                                int tj = j + _j;
+
+                                if(ti >= 0 && tj >= 0 && map.Length > ti && map[ti].Length > tj)
+                                {
+                                    if(map[ti][tj] == neighbor)
+                                    {
+                                        if(map[i][j] == individual)
+                                        {
+                                            n++;
+                                        }
+                                        else
+                                        {
+                                            tm++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
-                    else
-                    {
-                        m = Math.Max(
-                                m,
-                                HandShakesIndividualSE(map, i, j, neighbor) +
-                                HandShakesIndividualNW(map, i, j, neighbor)
-                            );
-                    }
+                    m = Math.Max(m, tm);
                 }
             }
-
-            return n + m;
-        }
-
-        static int HandShakesIndividualSE(string[] map, int i, int j, char neighbor)
-        {
-            int n = 0;
-
-            bool south = map.Length > i + 1;
-            bool east = map[i].Length > j + 1;
-            bool west = j > 0;
-
-            int wj = j - 1;
-            int si = i + 1;
-            int ej = j + 1;
-
-            Func<int,int,bool> isNeighbor = (_i,_j) => map[_i][_j] == neighbor;
-
-            // s
-            if(south)
-            {
-                if(isNeighbor(si, j))
-                {
-                    n++;
-                }
-
-                // se
-                if(east)
-                {
-                    if(isNeighbor(si, ej))
-                    {
-                        n++;
-                    }
-                }
-
-                // sw
-                if(west)
-                {
-                    if(isNeighbor(si, wj))
-                    {
-                        n++;
-                    }
-                }
-            }
-
-            // e
-            if(east)
-            {
-                if(isNeighbor(i, ej))
-                {
-                    n++;
-                }
-            }
-
-            return n;
-        }
-
-        static int HandShakesIndividualNW(string[] map, int i, int j, char neighbor)
-        {
-            int n = 0;
-
-            bool north = i > 0;
-            bool west = j > 0;
-            bool east = map[i].Length > j + 1;
-
-            int ej = j + 1;
-            int ni = i - 1;
-            int wj = j - 1;
-
-            Func<int,int,bool> isNeighbor = (_i,_j) => map[_i][_j] == neighbor;
-
-            // n
-            if(north)
-            {
-                if(isNeighbor(ni, j))
-                {
-                    n++;
-                }
-
-                // ne
-                if(east)
-                {
-                    if(isNeighbor(ni, ej))
-                    {
-                        n++;
-                    }
-                }
-
-                // nw
-                if(west)
-                {
-                    if(isNeighbor(ni, wj))
-                    {
-                        n++;
-                    }
-                }
-            }
-
-            // w
-            if(west)
-            {
-                if(isNeighbor(i, wj))
-                {
-                    n++;
-                }
-            }
-
-            return n;
+            return n/2 + m;
         }
 
         static string[] ReadStringArray(int n)
